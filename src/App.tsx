@@ -1,0 +1,124 @@
+import { useEffect, useState } from "react";
+
+const App = () => {
+  const [email, setEmail] = useState("");
+  const [validate, setValidate] = useState<boolean | null>(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const validarEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (validarEmail(email)) {
+      setValidate(true);
+    } else {
+      setValidate(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
+    // <div className="grid grid-cols-6 grid-rows-6 gap-1 w-screen h-screen">
+    //   <div className="bg-red-400 col-span-3">1</div>
+    //   <div className="bg-blue-600 col-span-3 row-span-6 col-start-4">3</div>
+    //   <div className="bg-teal-600  col-span-3 row-span-5 row-start-2">4</div>
+    // </div>
+    <main
+      className=" w-screen min-h-screen flex flex-col font-josefinSans md:h-screen md:grid md:grid-cols-6 md:grid-rows-6 grid-rows-6 "
+      style={{
+        backgroundImage:
+          windowWidth >= 768 ? "url('/images/bg-pattern-desktop.svg')" : "",
+      }}
+    >
+      <picture className="h-[86px] flex justify-start items-center ml-7 md:col-span-3">
+        <img src="../images/logo.svg" alt="logo" className="w-[100px] " />
+      </picture>
+      <picture className="w-full md:col-span-3 md:h-auto">
+        <img
+          src={
+            windowWidth >= 768
+              ? "../images/hero-desktop.jpg"
+              : "../images/hero-mobile.jpg"
+          }
+          alt="hero-mobile"
+          className="w-full"
+        />
+      </picture>
+
+      <article className="flex flex-col gap-8  justify-center items-center leading-[1.35rem] h-[400px] md:col-span-3">
+        <h1 className="text-DarkGrayishRed uppercase text-[38.4px] text-center w-[315px] h-[120px] tracking-[1rem] font-semibold leading-[2.63rem]">
+          {" "}
+          <span className="text-DesaturatedRed font-extralight">
+            We're
+          </span>{" "}
+          coming soon
+        </h1>
+        <p className="text-[14.4px] text-DesaturatedRed w-[315px] text-center font-light tracking-[0.028rem]">
+          Hello fellow shoppers! We're currently building our new fashion store.
+          Add your email below to stay up-to-date with announcements and our
+          launch deals.
+        </p>
+
+        <form
+          action="#"
+          className="w-[310px] flex justify-between items-center relative"
+          onSubmit={handleSubmit}
+        >
+          <div className="relative w-[100%]">
+            <input
+              id="input"
+              type="text"
+              className="h-[44px] w-[100%] border-[1px] border-DesaturatedRed rounded-full bg-transparent text-[1rem] px-[2rem] text-DarkGrayishRed placeholder:text-DesaturatedRed outline-none focus:border-[2px] focus:border-SoftRed"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {validate === false && (
+              <img
+                src="../images/icon-error.svg"
+                alt="icon-error"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 w-[22px] h-[22px]"
+              />
+            )}
+          </div>
+
+          <button className="bg-DesaturatedRed w-[65px] h-[44px] rounded-full flex justify-center items-center cursor-pointer absolute right-0">
+            <img
+              src="../images/arrow_13050814.png"
+              alt="icon-arrow"
+              className="bg-none text-white w-[25px] h-[25px] filter brightness-0 invert"
+            />
+          </button>
+        </form>
+        {validate === true && (
+          <p className="text-green-600 text-left ">
+            Email registered correctly
+          </p>
+        )}
+        {validate === false && (
+          <>
+            <p className="text-SoftRed text-left ">
+              Please provide a valid Email
+            </p>
+          </>
+        )}
+      </article>
+    </main>
+  );
+};
+
+export default App;
