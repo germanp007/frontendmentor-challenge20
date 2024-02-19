@@ -38,26 +38,33 @@ const App = () => {
     //   <div className="bg-teal-600  col-span-3 row-span-5 row-start-2">4</div>
     // </div>
     <main
-      className=" w-screen min-h-screen flex flex-col font-josefinSans md:h-screen md:grid md:grid-cols-6 md:grid-rows-6 grid-rows-6 "
+      className=" w-screen min-h-screen flex flex-col font-josefinSans md:h-[800px] md:grid md:grid-cols-12 md:grid-rows-6 "
       style={{
         backgroundImage:
           windowWidth >= 768 ? "url('/images/bg-pattern-desktop.svg')" : "",
       }}
     >
-      <picture className="h-[86px] flex justify-start items-center ml-7 md:col-span-3">
+      <picture className="h-[86px] flex justify-start items-center ml-7 md:col-span-7">
         <img src="../images/logo.svg" alt="logo" className="w-[100px] " />
       </picture>
-      <picture className="w-full md:col-span-3 md:h-auto">
-        <img
-          src={
-            windowWidth >= 768
-              ? "../images/hero-desktop.jpg"
-              : "../images/hero-mobile.jpg"
-          }
-          alt="hero-mobile"
-          className="w-full"
-        />
-      </picture>
+      {windowWidth >= 768 ? (
+        <aside
+          className="md:col-span-5 md:row-span-6"
+          style={{
+            backgroundImage: "url('../images/hero-desktop.jpg')",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        ></aside>
+      ) : (
+        <picture className="w-full ">
+          <img
+            src={"../images/hero-mobile.jpg"}
+            alt="hero-mobile"
+            className="w-full"
+          />
+        </picture>
+      )}
 
       <article className="flex flex-col gap-8  justify-center items-center leading-[1.35rem] h-[400px] md:col-span-3">
         <h1 className="text-DarkGrayishRed uppercase text-[38.4px] text-center w-[315px] h-[120px] tracking-[1rem] font-semibold leading-[2.63rem]">
