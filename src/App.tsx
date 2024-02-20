@@ -44,8 +44,12 @@ const App = () => {
           windowWidth >= 768 ? "url('/images/bg-pattern-desktop.svg')" : "",
       }}
     >
-      <picture className="h-[86px] flex justify-start items-center ml-7 md:col-span-7 md:row-span-3">
-        <img src="../images/logo.svg" alt="logo" className="w-[100px] " />
+      <picture className="h-[86px] flex justify-start items-center ml-7 md:col-span-7 md:row-span-2 md:h-[160px] ">
+        <img
+          src="../images/logo.svg"
+          alt="logo"
+          className="w-[100px] md:w-[158px] md:h-[33px] md:ml-[160px]"
+        />
       </picture>
       {windowWidth >= 768 ? (
         <aside
@@ -66,8 +70,8 @@ const App = () => {
         </picture>
       )}
 
-      <article className="flex flex-col gap-8 mt-6 justify-center items-center leading-[1.35rem] min-h-[400px]  md:col-span-7 md:row-span-10 row-start-4">
-        <h1 className="text-DarkGrayishRed uppercase text-[38.4px] text-center w-[315px] min-h-[120px] tracking-[1rem] font-semibold leading-[2.63rem] md:text-[63px] md:leading-[4.63rem] md:text-start">
+      <article className="flex flex-col gap-8 mt-6 justify-center items-center leading-[1.35rem] min-h-[400px]  md:col-span-7 md:row-span-10 row-start-4 md:pr-[120px]">
+        <h1 className="text-DarkGrayishRed uppercase text-[38.4px] text-center w-[315px] min-h-[120px] tracking-[1rem] font-semibold leading-[2.63rem] md:text-[63px] md:leading-[4.63rem] md:text-left md:min-w-[400px]">
           {" "}
           <span className="text-DesaturatedRed font-extralight">
             We're
