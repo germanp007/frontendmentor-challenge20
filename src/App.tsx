@@ -44,11 +44,11 @@ const App = () => {
           windowWidth >= 768 ? "url('/images/bg-pattern-desktop.svg')" : "",
       }}
     >
-      <picture className="h-[86px] flex justify-start items-center ml-7 md:col-span-7 md:row-span-2 md:h-[160px] ">
+      <picture className="h-[86px] flex justify-start items-center ml-7 md:col-span-7 md:row-span-2 md:h-[160px] md:w-[400px] md:m-auto">
         <img
           src="../images/logo.svg"
           alt="logo"
-          className="w-[100px] md:w-[158px] md:h-[33px] md:ml-[160px]"
+          className="w-[100px] md:w-[158px] md:h-[33px]"
         />
       </picture>
       {windowWidth >= 768 ? (
@@ -70,7 +70,7 @@ const App = () => {
         </picture>
       )}
 
-      <article className="flex flex-col gap-8 mt-6 justify-center items-center leading-[1.35rem] min-h-[400px]  md:col-span-7 md:row-span-10 row-start-4 md:pr-[120px]">
+      <article className="flex flex-col gap-8 mt-6 justify-center items-center leading-[1.35rem] min-h-[400px]  md:col-span-7 md:row-span-10 row-start-4 md:w-[450px] md:m-auto">
         <h1 className="text-DarkGrayishRed uppercase text-[38.4px] text-center w-[315px] min-h-[120px] tracking-[1rem] font-semibold leading-[2.63rem] md:text-[63px] md:leading-[4.63rem] md:text-left md:min-w-[400px]">
           {" "}
           <span className="text-DesaturatedRed font-extralight">
@@ -86,14 +86,14 @@ const App = () => {
 
         <form
           action="#"
-          className="w-[310px] flex justify-between items-center relative md:w-[445px] md:h-[56px]"
+          className="w-[310px] flex justify-between items-center relative md:w-[445px] md:h-[56px] md:ml-10"
           onSubmit={handleSubmit}
         >
-          <div className="relative w-[100%]">
+          <div className="relative w-[100%] md:w-[90%]">
             <input
               id="input"
               type="text"
-              className="h-[44px] w-[100%] border-[1px] border-DesaturatedRed rounded-full bg-transparent text-[1rem] px-[2rem] text-DarkGrayishRed placeholder:text-DesaturatedRed outline-none focus:border-[2px] focus:border-SoftRed"
+              className="h-[44px] w-[100%] md:w-[90%] border-[1px] border-DesaturatedRed rounded-full bg-transparent text-[1rem] px-[2rem] text-DarkGrayishRed placeholder:text-DesaturatedRed outline-none focus:border-[2px] focus:border-SoftRed"
               placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -107,7 +107,7 @@ const App = () => {
             )}
           </div>
 
-          <button className="bg-DesaturatedRed w-[65px] h-[44px] rounded-full flex justify-center items-center cursor-pointer absolute right-0 md:w-[85px]">
+          <button className="bg-DesaturatedRed w-[65px] h-[44px] rounded-full flex justify-center items-center cursor-pointer absolute right-0 md:w-[85px] md:right-8">
             <img
               src="../images/arrow_13050814.png"
               alt="icon-arrow"
